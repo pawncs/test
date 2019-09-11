@@ -10,6 +10,10 @@ li{
     border:1px solid red;
 }
 
+.left .display,.opr .top,.opr .display{
+    border:1px solid red;
+}
+
 body{
     display:flex;
     justify-content: center;
