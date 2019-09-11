@@ -11,16 +11,18 @@
     <div class="left">
 
         <div class="display">显示命题变元数量</div>
-        <input type="button" class="button" placeholder="添加命题变元">
+        <button class="add">添加命题变元</button>
+        <button class="delete">减少命题变元</button>
 
-        <input type="button" class="button" placeholder="减少命题变元">
+        <ul class="variable"></ul>
     </div>
 
     <div class="opr">
-        <div class="top">有关命题公式的输入
-            <input type="text">
-        </div>
-        <div class="bottom">确定</div>
+        <div class="notice">命题公式的输入</div>
+        <div class="top">有关命题公式的输入 </div>
+        <button class="bottom">确定</button>
+        <button class="delete">退格</button>
+        <button class="clear">清零</button>
     </div>
     <div class="display">
         <p>显示答案</p>
@@ -28,11 +30,13 @@
 
     <div class="right">
         <ul>
-            <li>∨(逻辑或)</li>
-            <li>∧(逻辑与)</li>
-            <li>¬(非)</li>
-            <li>→(单条件)</li>
-            <li>=(双条件)</li>
+            <li onclick="addInput(event)">∨</li>
+            <li onclick="addInput(event)">∧</li>
+            <li onclick="addInput(event)">¬</li>
+            <li onclick="addInput(event)">→</li>
+            <li onclick="addInput(event)">=</li>
+            <li onclick="addInput(event)">(</li>
+            <li onclick="addInput(event)">)</li>
         </ul>
     </div>
 <script src="../js/index.js"></script>
