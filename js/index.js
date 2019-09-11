@@ -34,11 +34,22 @@ deletex.addEventListener("click",function(){
 //     input += addDom;
 //     inputDisplay.innerHTML = input;
 // }
+/**
+ * 函数功能：获取要输入的操作数或操作符
+ * @param {*} event 
+ */
 function addInput(event){
     let addDom = event.target.innerText;
     input += addDom;
     inputDisplay.innerHTML = input;
 }
+
+document.querySelector(".opr .clear").addEventListener("click",function(){
+    input = "";
+    inputDisplay.innerHTML = input;
+});
+document.querySelector(".opr .delete").addEventListener("") 
+
 
 // oprAdd.addEventListener("click",addInput(event));
 
@@ -52,5 +63,4 @@ function addInput(event){
 
 
 
-//let deleteX ……
 

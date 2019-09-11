@@ -10,7 +10,7 @@ li{
     border:1px solid red;
 }
 
-.left .display,.opr .top,.opr .display{
+.left .display,.opr .top,.opr .display,.left,.right,.opr{
     border:1px solid red;
 }
 
