@@ -22,11 +22,12 @@
     <div class="opr">
         <div class="notice">命题公式的输入</div>
         <div class="top">有关命题公式的输入 </div>
-        <button class="ok">确定</button>
+        <button class="ok-or">主析取范式</button>
+        <button class="ok-and">主合取范式</button>
         <button class="delete">退格</button>
         <button class="clear">清零</button>
 
-        <div class="display">请检查输入是否有误！</div>
+        <div class="display" style="word-break:break-all" >显示答案</div>
     </div>
 
     <div class="right">
@@ -39,6 +40,9 @@
             <li onclick="addInput(event)">(</li>
             <li onclick="addInput(event)">)</li>
         </ul>
+    </div>
+    <div class="bottom">
+        <div class="notice">此程序优先级为：(┐)  >  (∧)  >  (∨)  =  (→)  >  (=),有括号先进行括号内运算</div>
     </div>
     <script src="../js/index.js"></script>
 </body>

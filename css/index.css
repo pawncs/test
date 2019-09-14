@@ -5,6 +5,11 @@
     
 }
 
+body{
+    display:flex;
+    justify-content: center;
+}
+
 li{
     cursor:pointer;
     border:1px solid red;
@@ -17,10 +22,20 @@ li{
 .display ,.top{
     padding-left: 10px;
     padding-right: 10px;
-    height: 25px;
+
 }
 
-body{
-    display:flex;
-    justify-content: center;
+.left{
+    width:10%;
+}
+.right{
+    width:10%;
+}
+.opr{
+    width:40%;
+}
+
+body .bottom{
+    position: absolute;
+    top:-15px;
 }
