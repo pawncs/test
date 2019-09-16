@@ -11,7 +11,7 @@ let variablex = document.querySelector(".left .variable");
 let inputDisplay = document.querySelector(".opr .top");
 let oprAdd = document.querySelector(".right ul");
 
-addx.addEventListener("click",function(){
+addx.addEventListener("click",function(){//函数功能：添加变元数量
     if(num===26) return ;
     num++;
     p = document.createElement("li");
@@ -23,7 +23,7 @@ addx.addEventListener("click",function(){
     p.innerHTML = String.fromCharCode((65-1+num));
     displayx.innerHTML = num;
 });
-deletex.addEventListener("click",function(){
+deletex.addEventListener("click",function(){//函数功能：减少变元数量
     if(num===0) return ;
     num --;
     variablex.removeChild(variablex.lastChild);
@@ -38,16 +38,20 @@ deletex.addEventListener("click",function(){
  * 函数功能：获取要输入的操作数或操作符
  * @param {*} event 
  */
-function addInput(event){
+function addInput(event){//函数功能：往输入框加入内容
     let addDom = event.target.innerText;
     input += addDom;
     inputDisplay.innerHTML = "输入为："+input;
 }
 
+
+//函数功能：清零输入框
 document.querySelector(".opr .clear").addEventListener("click",function(){
     input = "";
     inputDisplay.innerHTML = "输入为："+input;
 });
+
+//函数功能：输入框的退格操作
 document.querySelector(".opr .delete").addEventListener("click",function(){
     input = input.substr(0,input.length-1);
     inputDisplay.innerHTML = "输入为："+input;
@@ -66,7 +70,7 @@ document.querySelector(".opr .delete").addEventListener("click",function(){
 //####################################################################
 //以上为输入处理，下面为输出处理
 //####################################################################
-document.querySelector(".opr .ok-or").addEventListener("click",function(){
+document.querySelector(".opr .ok-or").addEventListener("click",function(){//主析取
     document.querySelector(".opr .display").innerHTML = "请检查输入是否有误！";
     // input = inputDisplay.innerHTML;
     let resultOr = new Array();//主析取中的小项
@@ -159,7 +163,7 @@ document.querySelector(".opr .ok-or").addEventListener("click",function(){
 
 
 
-document.querySelector(".opr .ok-and").addEventListener("click",function(){
+document.querySelector(".opr .ok-and").addEventListener("click",function(){//主合取
     document.querySelector(".opr .display").innerHTML = "请检查输入是否有误！";
     // input = inputDisplay.innerHTML;
     let resultAnd = new Array();//主合取中的大项
