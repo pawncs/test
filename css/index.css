@@ -15,8 +15,12 @@ li{
     border:1px solid red;
 }
 
-.left .display,.opr .top,.opr .display,.left,.right,.opr{
+.left .display,.opr .top,.opr .display,.left,.right,.opr,input{
     border:1px solid red;
+}
+
+input{
+    width:90%;
 }
 
 .display ,.top{

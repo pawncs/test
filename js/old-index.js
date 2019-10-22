@@ -1,8 +1,7 @@
 let input = "";//输入
 let res = "";//输出
 let num = 0;
-let variable = new Array(26);//变元（画表用）
-let variable_name = new Array(26);//变元名称
+let variable = new Array(26);//变元
 
 let isNot = new Array(26);//是否加非？
 let addx = document.querySelector(".left .add");
@@ -12,20 +11,50 @@ let variablex = document.querySelector(".left .variable");
 let inputDisplay = document.querySelector(".opr .top");
 let oprAdd = document.querySelector(".right ul");
 
+addx.addEventListener("click",function(){//函数功能：添加变元数量
+    if(num===26) return ;
+    num++;
+    p = document.createElement("li");
+ 
+    variablex.appendChild(p);
+   
+    p = variablex.lastChild;
+    p.setAttribute("onclick","addInput(event)");
+    p.innerHTML = String.fromCharCode((65-1+num));
+    displayx.innerHTML = num;
+});
+deletex.addEventListener("click",function(){//函数功能：减少变元数量
+    if(num===0) return ;
+    num --;
+    variablex.removeChild(variablex.lastChild);
+    displayx.innerHTML = num;
+})
+// document.querySelector(".left ul").onclick = function(event){
+//     let addDom = event.target.innerText;
+//     input += addDom;
+//     inputDisplay.innerHTML = input;
+// }
 /**
  * 函数功能：获取要输入的操作数或操作符
  * @param {*} event 
  */
 function addInput(event){//函数功能：往输入框加入内容
     let addDom = event.target.innerText;
-    document.querySelector(".opr input").value += addDom;
+    input += addDom;
+    inputDisplay.innerHTML = "输入为："+input;
 }
 
 
 //函数功能：清零输入框
 document.querySelector(".opr .clear").addEventListener("click",function(){
+    input = "";
+    inputDisplay.innerHTML = "输入为："+input;
+});
 
-    document.querySelector(".opr input").value = "";
+//函数功能：输入框的退格操作
+document.querySelector(".opr .delete").addEventListener("click",function(){
+    input = input.substr(0,input.length-1);
+    inputDisplay.innerHTML = "输入为："+input;
 });
 
 
@@ -42,33 +71,6 @@ document.querySelector(".opr .clear").addEventListener("click",function(){
 //以上为输入处理，下面为输出处理
 //####################################################################
 document.querySelector(".opr .ok-or").addEventListener("click",function(){//主析取
-    let i;
-    //新增确定变元内容和得到input内容
-    while(true){
-        if(num===0) break ;
-        num --;
-        variablex.removeChild(variablex.lastChild);
-        displayx.innerHTML = num;
-    }
-    num = 0;
-    variable_name = [];
-    input = document.querySelector(".opr input").value;
-    for(i = 0;i<input.length;i++){
-        if(input[i]<='Z'&&input[i]>="A"&&!(variable_name.indexOf(input[i])>-1)){
-            variable_name[num] = input[i];
-            p = document.createElement("li");
- 
-            variablex.appendChild(p);
-   
-            p = variablex.lastChild;
-            p.setAttribute("onclick","addInput(event)");
-            p.innerHTML = variable_name[num];
-            num++;
-            displayx.innerHTML = num;
-        }
-    }
-
-
     document.querySelector(".opr .display").innerHTML = "请检查输入是否有误！";
     // input = inputDisplay.innerHTML;
     let resultOr = new Array();//主析取中的小项
@@ -116,7 +118,7 @@ document.querySelector(".opr .ok-or").addEventListener("click",function(){//主�
         //替换字符串
         for(inputI = 0;inputI<inputArray.length;inputI++){
             for(k = 0;k<num;k++){
-                if(inputArrayCopy[inputI] ===  variable_name[k]){
+                if(inputArrayCopy[inputI] ===  String.fromCharCode((65+k))){
                     inputArrayCopy[inputI] = ""+variable[k];
                 }
             }
@@ -145,7 +147,7 @@ document.querySelector(".opr .ok-or").addEventListener("click",function(){//主�
         res += "(";
         for(j = 0;j<num;j++){
             if(isNot[j] === 0) res += "¬";
-            res += variable_name[j];
+            res += String.fromCharCode((65 + j));
             res += "∧";
         }
         res = res.substr(0,res.length-1);
@@ -162,32 +164,6 @@ document.querySelector(".opr .ok-or").addEventListener("click",function(){//主�
 
 
 document.querySelector(".opr .ok-and").addEventListener("click",function(){//主合取
-    let i;
-    //新增确定变元内容和得到input内容
-    while(true){
-        if(num===0) break ;
-        num --;
-        variablex.removeChild(variablex.lastChild);
-        displayx.innerHTML = num;
-    }
-    num = 0;
-    variable_name = [];
-    input = document.querySelector(".opr input").value;
-    for(i = 0;i<input.length;i++){
-        if(input[i]<='Z'&&input[i]>="A"&&!(variable_name.indexOf(input[i])>-1)){
-            variable_name[num] = input[i];
-            p = document.createElement("li");
- 
-            variablex.appendChild(p);
-   
-            p = variablex.lastChild;
-            p.setAttribute("onclick","addInput(event)");
-            p.innerHTML = variable_name[num];
-            num++;
-            displayx.innerHTML = num;
-        }
-    }
-
     document.querySelector(".opr .display").innerHTML = "请检查输入是否有误！";
     // input = inputDisplay.innerHTML;
     let resultAnd = new Array();//主合取中的大项
@@ -235,7 +211,7 @@ document.querySelector(".opr .ok-and").addEventListener("click",function(){//主
         //替换字符串
         for(inputI = 0;inputI<inputArray.length;inputI++){
             for(k = 0;k<num;k++){
-                if(inputArrayCopy[inputI] ===  variable_name[k]){
+                if(inputArrayCopy[inputI] ===  String.fromCharCode((65+k))){
                     inputArrayCopy[inputI] = ""+variable[k];
                 }
             }
@@ -264,7 +240,7 @@ document.querySelector(".opr .ok-and").addEventListener("click",function(){//主
         res += "(";
         for(j = 0;j<num;j++){
             if(isNot[j] === 1) res += "¬";
-            res += variable_name[j];
+            res += String.fromCharCode((65 + j));
             res += "∨";
         }
         res = res.substr(0,res.length-1);
